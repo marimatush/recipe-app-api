@@ -20,7 +20,7 @@ def create_recipe(user, **params):
     """Create and return a sample recipe."""
     defaults = {
         'title': 'Sample recipe title',
-        'time_minues': 22,
+        'time_minutes': 22,
         'price': Decimal('5.01'),
         'description': 'Sample descripttion',
         'link': 'http://example.com/recipe.pdf',
@@ -49,9 +49,9 @@ class PrivateRecipeAPITests(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.user = get_user_model().objects.create_user(
-            email='test@example.com',
+            email='user@example.com',
             password='testpassword123',
-            name='Test Name',
+            name='Test User Name',
         )
         self.client.force_authenticate(self.user)
 
