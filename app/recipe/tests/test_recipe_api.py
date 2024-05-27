@@ -18,7 +18,6 @@ from core.models import (
 from recipe.serializers import (
     RecipeSerializer,
     RecipeDetailSerializer,
-    IngredientSerializer,
 )
 
 RECIPIES_URL = reverse('recipe:recipe-list')
