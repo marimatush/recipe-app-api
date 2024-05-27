@@ -146,5 +146,5 @@ REST_FRAMEWORK = {
 
 # To be able to upload images throw browser interface
 SPECTACULAR_SETTINGS = {
-    'COMPONNT_SPLIT_REQUEST': True,
+    'COMPONENT_SPLIT_REQUEST': True,
 }
