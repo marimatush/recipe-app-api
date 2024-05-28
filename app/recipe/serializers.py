@@ -10,20 +10,20 @@ from core.models import (
 )
 
 
-class TagSerializer(serializers.ModelSerializer):
-    """Serializer for tags."""
-
-    class Meta:
-        model = Tag
-        fields = ['id', 'name']
-        read_only_fields = ['id']
-
-
 class IngredientSerializer(serializers.ModelSerializer):
     """Serializer for ingredients."""
 
     class Meta:
         model = Ingredient
+        fields = ['id', 'name']
+        read_only_fields = ['id']
+
+
+class TagSerializer(serializers.ModelSerializer):
+    """Serializer for tags."""
+
+    class Meta:
+        model = Tag
         fields = ['id', 'name']
         read_only_fields = ['id']
 
@@ -61,11 +61,11 @@ class RecipeSerializer(serializers.ModelSerializer):
             )
             recipe.ingredients.add(ingredient_obj)
 
-    def create(self, validate_data):
+    def create(self, validated_data):
         """Create a recipe."""
-        tags = validate_data.pop('tags', [])
-        ingredients = validate_data.pop('ingredients', [])
-        recipe = Recipe.objects.create(**validate_data)
+        tags = validated_data.pop('tags', [])
+        ingredients = validated_data.pop('ingredients', [])
+        recipe = Recipe.objects.create(**validated_data)
         self._get_or_create_tags(tags, recipe)
         self._get_or_create_ingredients(ingredients, recipe)
 
